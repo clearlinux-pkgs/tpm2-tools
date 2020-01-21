@@ -1,1 +1,3 @@
-Configure miss: pandoc
+Configure miss: whether to enable debugging
+Configure miss: TSS2_ESYS_3_0
+Configure miss: whether to add -D_FORTIFY_SOURCE=2 to CPPFLAGS
