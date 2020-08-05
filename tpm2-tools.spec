@@ -6,7 +6,7 @@
 #
 Name     : tpm2-tools
 Version  : 4.2.1
-Release  : 6
+Release  : 7
 URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/4.2.1/tpm2-tools-4.2.1.tar.gz
 Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/4.2.1/tpm2-tools-4.2.1.tar.gz
 Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/4.2.1/tpm2-tools-4.2.1.tar.gz.asc
@@ -78,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1594142741
+export SOURCE_DATE_EPOCH=1596644739
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -92,10 +92,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1594142741
+export SOURCE_DATE_EPOCH=1596644739
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tpm2-tools
 cp %{_builddir}/tpm2-tools-4.2.1/doc/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9
