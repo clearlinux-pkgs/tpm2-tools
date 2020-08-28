@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x6DE2E9078E1F50C1 (william.c.roberts@intel.com)
 #
 Name     : tpm2-tools
-Version  : 4.2.1
-Release  : 7
-URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/4.2.1/tpm2-tools-4.2.1.tar.gz
-Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/4.2.1/tpm2-tools-4.2.1.tar.gz
-Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/4.2.1/tpm2-tools-4.2.1.tar.gz.asc
+Version  : 4.3.0
+Release  : 8
+URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/4.3.0/tpm2-tools-4.3.0.tar.gz
+Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/4.3.0/tpm2-tools-4.3.0.tar.gz
+Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/4.3.0/tpm2-tools-4.3.0.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -70,15 +70,15 @@ man components for the tpm2-tools package.
 
 
 %prep
-%setup -q -n tpm2-tools-4.2.1
-cd %{_builddir}/tpm2-tools-4.2.1
+%setup -q -n tpm2-tools-4.3.0
+cd %{_builddir}/tpm2-tools-4.3.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1596644739
+export SOURCE_DATE_EPOCH=1598643985
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -95,10 +95,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1596644739
+export SOURCE_DATE_EPOCH=1598643985
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tpm2-tools
-cp %{_builddir}/tpm2-tools-4.2.1/doc/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9
+cp %{_builddir}/tpm2-tools-4.3.0/doc/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9
 %make_install
 
 %files
