@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x14986F6944B1F72B (imran.desai@intel.com)
 #
 Name     : tpm2-tools
-Version  : 5.0
-Release  : 9
-URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/5.0/tpm2-tools-5.0.tar.gz
-Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.0/tpm2-tools-5.0.tar.gz
-Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.0/tpm2-tools-5.0.tar.gz.asc
+Version  : 5.1
+Release  : 10
+URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/5.1/tpm2-tools-5.1.tar.gz
+Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.1/tpm2-tools-5.1.tar.gz
+Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.1/tpm2-tools-5.1.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -19,6 +19,7 @@ Requires: tpm2-tools-license = %{version}-%{release}
 Requires: tpm2-tools-man = %{version}-%{release}
 BuildRequires : pandoc
 BuildRequires : pkgconfig(cmocka)
+BuildRequires : pkgconfig(efivar)
 BuildRequires : pkgconfig(libcrypto)
 BuildRequires : pkgconfig(libcurl)
 BuildRequires : pkgconfig(tss2-esys)
@@ -30,7 +31,7 @@ BuildRequires : pkgconfig(tss2-tctildr)
 BuildRequires : pkgconfig(uuid)
 
 %description
-[![Build Status](https://travis-ci.org/tpm2-software/tpm2-tools.svg?branch=master)](https://travis-ci.org/tpm2-software/tpm2-tools)
+[![Build Status](https://github.com/tpm2-software/tpm2-tools/workflows/CI/badge.svg)](https://github.com/tpm2-software/tpm2-tools/actions)
 [![FreeBSD Build Status](https://api.cirrus-ci.com/github/tpm2-software/tpm2-tools.svg?branch=master)](https://cirrus-ci.com/github/tpm2-software/tpm2-tools)
 [![codecov](https://codecov.io/gh/tpm2-software/tpm2-tools/branch/master/graph/badge.svg)](https://codecov.io/gh/tpm2-software/tpm2-tools)
 [![Coverity Scan](https://img.shields.io/coverity/scan/3997.svg)](https://scan.coverity.com/projects/01org-tpm2-0-tools)
@@ -71,15 +72,15 @@ man components for the tpm2-tools package.
 
 
 %prep
-%setup -q -n tpm2-tools-5.0
-cd %{_builddir}/tpm2-tools-5.0
+%setup -q -n tpm2-tools-5.1
+cd %{_builddir}/tpm2-tools-5.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605633679
+export SOURCE_DATE_EPOCH=1621958598
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -96,10 +97,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1605633679
+export SOURCE_DATE_EPOCH=1621958598
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tpm2-tools
-cp %{_builddir}/tpm2-tools-5.0/doc/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9
+cp %{_builddir}/tpm2-tools-5.1/doc/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9
 %make_install
 
 %files
@@ -138,6 +139,7 @@ cp %{_builddir}/tpm2-tools-5.0/doc/LICENSE %{buildroot}/usr/share/package-licens
 /usr/bin/tpm2_getcommandauditdigest
 /usr/bin/tpm2_geteccparameters
 /usr/bin/tpm2_getekcertificate
+/usr/bin/tpm2_getpolicydigest
 /usr/bin/tpm2_getrandom
 /usr/bin/tpm2_getsessionauditdigest
 /usr/bin/tpm2_gettestresult
@@ -194,6 +196,7 @@ cp %{_builddir}/tpm2-tools-5.0/doc/LICENSE %{buildroot}/usr/share/package-licens
 /usr/bin/tpm2_rsaencrypt
 /usr/bin/tpm2_selftest
 /usr/bin/tpm2_send
+/usr/bin/tpm2_sessionconfig
 /usr/bin/tpm2_setclock
 /usr/bin/tpm2_setcommandauditstatus
 /usr/bin/tpm2_setprimarypolicy
@@ -323,6 +326,7 @@ cp %{_builddir}/tpm2-tools-5.0/doc/LICENSE %{buildroot}/usr/share/package-licens
 /usr/share/man/man1/tpm2_getcommandauditdigest.1
 /usr/share/man/man1/tpm2_geteccparameters.1
 /usr/share/man/man1/tpm2_getekcertificate.1
+/usr/share/man/man1/tpm2_getpolicydigest.1
 /usr/share/man/man1/tpm2_getrandom.1
 /usr/share/man/man1/tpm2_getsessionauditdigest.1
 /usr/share/man/man1/tpm2_gettestresult.1
@@ -379,6 +383,7 @@ cp %{_builddir}/tpm2-tools-5.0/doc/LICENSE %{buildroot}/usr/share/package-licens
 /usr/share/man/man1/tpm2_rsaencrypt.1
 /usr/share/man/man1/tpm2_selftest.1
 /usr/share/man/man1/tpm2_send.1
+/usr/share/man/man1/tpm2_sessionconfig.1
 /usr/share/man/man1/tpm2_setclock.1
 /usr/share/man/man1/tpm2_setcommandauditstatus.1
 /usr/share/man/man1/tpm2_setprimarypolicy.1
