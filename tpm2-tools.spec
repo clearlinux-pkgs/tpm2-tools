@@ -6,7 +6,7 @@
 #
 Name     : tpm2-tools
 Version  : 5.2
-Release  : 12
+Release  : 13
 URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/5.2/tpm2-tools-5.2.tar.gz
 Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.2/tpm2-tools-5.2.tar.gz
 Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.2/tpm2-tools-5.2.tar.gz.asc
