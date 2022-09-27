@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x14986F6944B1F72B (imran.desai@intel.com)
 #
 Name     : tpm2-tools
-Version  : 5.2
-Release  : 14
-URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/5.2/tpm2-tools-5.2.tar.gz
-Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.2/tpm2-tools-5.2.tar.gz
-Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.2/tpm2-tools-5.2.tar.gz.asc
+Version  : 5.3
+Release  : 15
+URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/5.3/tpm2-tools-5.3.tar.gz
+Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.3/tpm2-tools-5.3.tar.gz
+Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.3/tpm2-tools-5.3.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -71,15 +71,15 @@ man components for the tpm2-tools package.
 
 
 %prep
-%setup -q -n tpm2-tools-5.2
-cd %{_builddir}/tpm2-tools-5.2
+%setup -q -n tpm2-tools-5.3
+cd %{_builddir}/tpm2-tools-5.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663082838
+export SOURCE_DATE_EPOCH=1664313948
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -96,10 +96,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1663082838
+export SOURCE_DATE_EPOCH=1664313948
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tpm2-tools
-cp %{_builddir}/tpm2-tools-%{version}/doc/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9 || :
+cp %{_builddir}/tpm2-tools-%{version}/docs/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9 || :
 %make_install
 
 %files
@@ -130,6 +130,7 @@ cp %{_builddir}/tpm2-tools-%{version}/doc/LICENSE %{buildroot}/usr/share/package
 /usr/bin/tpm2_ecdhkeygen
 /usr/bin/tpm2_ecdhzgen
 /usr/bin/tpm2_ecephemeral
+/usr/bin/tpm2_encodeobject
 /usr/bin/tpm2_encryptdecrypt
 /usr/bin/tpm2_eventlog
 /usr/bin/tpm2_evictcontrol
@@ -225,6 +226,7 @@ cp %{_builddir}/tpm2-tools-%{version}/doc/LICENSE %{buildroot}/usr/share/package
 /usr/bin/tss2_getinfo
 /usr/bin/tss2_getplatformcertificates
 /usr/bin/tss2_getrandom
+/usr/bin/tss2_gettpm2object
 /usr/bin/tss2_gettpmblobs
 /usr/bin/tss2_import
 /usr/bin/tss2_list
@@ -267,6 +269,7 @@ cp %{_builddir}/tpm2-tools-%{version}/doc/LICENSE %{buildroot}/usr/share/package
 /usr/share/bash-completion/completions/tss2_getinfo
 /usr/share/bash-completion/completions/tss2_getplatformcertificates
 /usr/share/bash-completion/completions/tss2_getrandom
+/usr/share/bash-completion/completions/tss2_gettpm2object
 /usr/share/bash-completion/completions/tss2_gettpmblobs
 /usr/share/bash-completion/completions/tss2_import
 /usr/share/bash-completion/completions/tss2_list
@@ -317,6 +320,7 @@ cp %{_builddir}/tpm2-tools-%{version}/doc/LICENSE %{buildroot}/usr/share/package
 /usr/share/man/man1/tpm2_ecdhkeygen.1
 /usr/share/man/man1/tpm2_ecdhzgen.1
 /usr/share/man/man1/tpm2_ecephemeral.1
+/usr/share/man/man1/tpm2_encodeobject.1
 /usr/share/man/man1/tpm2_encryptdecrypt.1
 /usr/share/man/man1/tpm2_eventlog.1
 /usr/share/man/man1/tpm2_evictcontrol.1
@@ -411,6 +415,7 @@ cp %{_builddir}/tpm2-tools-%{version}/doc/LICENSE %{buildroot}/usr/share/package
 /usr/share/man/man1/tss2_getinfo.1
 /usr/share/man/man1/tss2_getplatformcertificates.1
 /usr/share/man/man1/tss2_getrandom.1
+/usr/share/man/man1/tss2_gettpm2object.1
 /usr/share/man/man1/tss2_gettpmblobs.1
 /usr/share/man/man1/tss2_import.1
 /usr/share/man/man1/tss2_list.1
