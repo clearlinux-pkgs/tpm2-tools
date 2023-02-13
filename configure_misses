@@ -1,3 +1,2 @@
-Configure miss: TSS2_ESYS_4_0
 Configure miss: whether to add -D_FORTIFY_SOURCE=2 to CPPFLAGS
 Configure miss: whether to enable debugging

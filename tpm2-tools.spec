@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x6DE2E9078E1F50C1 (william.c.roberts@intel.com)
 #
 Name     : tpm2-tools
-Version  : 5.4
-Release  : 16
-URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/5.4/tpm2-tools-5.4.tar.gz
-Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.4/tpm2-tools-5.4.tar.gz
-Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.4/tpm2-tools-5.4.tar.gz.asc
+Version  : 5.5
+Release  : 17
+URL      : https://github.com/tpm2-software/tpm2-tools/releases/download/5.5/tpm2-tools-5.5.tar.gz
+Source0  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.5/tpm2-tools-5.5.tar.gz
+Source1  : https://github.com/tpm2-software/tpm2-tools/releases/download/5.5/tpm2-tools-5.5.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -28,6 +28,9 @@ BuildRequires : pkgconfig(tss2-mu)
 BuildRequires : pkgconfig(tss2-rc)
 BuildRequires : pkgconfig(tss2-sys)
 BuildRequires : pkgconfig(tss2-tctildr)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 [![Build Status](https://github.com/tpm2-software/tpm2-tools/workflows/CI/badge.svg)](https://github.com/tpm2-software/tpm2-tools/actions)
@@ -71,20 +74,20 @@ man components for the tpm2-tools package.
 
 
 %prep
-%setup -q -n tpm2-tools-5.4
-cd %{_builddir}/tpm2-tools-5.4
+%setup -q -n tpm2-tools-5.5
+cd %{_builddir}/tpm2-tools-5.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1670951282
+export SOURCE_DATE_EPOCH=1676310182
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -96,7 +99,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1670951282
+export SOURCE_DATE_EPOCH=1676310182
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tpm2-tools
 cp %{_builddir}/tpm2-tools-%{version}/docs/LICENSE %{buildroot}/usr/share/package-licenses/tpm2-tools/e8566cc4b6c5a67bda0376f10f71d0df00e262a9 || :
